@@ -1,25 +1,15 @@
-import {
-  Link as ChakraLink,
-  Text,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
-} from '@chakra-ui/react'
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
+import { Link as ChakraLink, Text, Code, List, ListIcon, ListItem } from '@chakra-ui/react';
+import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons';
+import { Hero } from '../components/Hero';
+import { Container } from '../components/Container';
+import { Main } from '../components/Main';
+import { DarkModeSwitch } from '../components/DarkModeSwitch';
+import { CTA } from '../components/CTA';
+import { Footer } from '../components/Footer';
+import dynamic from 'next/dynamic';
 
-import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
-import dynamic from "next/dynamic";
-
-const RMRKInit = dynamic(
-    () => import('../components/rmrk-init'),
-    { ssr: false }
-)
+const RMRKInit = dynamic(() => import('../components/rmrk-init'), { ssr: false });
+const NFTList = dynamic(() => import('../components/nft-list/list'), { ssr: false });
 
 const Index = () => (
   <Container height="100vh">
@@ -30,27 +20,9 @@ const Index = () => (
         <Code>typescript</Code>.
       </Text>
 
-        <RMRKInit />
+      <RMRKInit />
+      <NFTList />
 
-      <List spacing={3} my={0}>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
     </Main>
 
     <DarkModeSwitch />
@@ -59,6 +31,6 @@ const Index = () => (
     </Footer>
     <CTA />
   </Container>
-)
+);
 
-export default Index
+export default Index;
