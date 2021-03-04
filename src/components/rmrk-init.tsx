@@ -1,10 +1,11 @@
 import React, {useEffect} from 'react';
-import * as rmrkTools from 'rmrk-tools/dist/cjs';
+import * as rmrkTools from 'rmrk-tools';
 import { web3Enable, isWeb3Injected, web3Accounts } from '@polkadot/extension-dapp';
 
 
 const initWeb3Login = async () => {
     try {
+        console.log(rmrkTools)
         await web3Enable("RMRK Test");
         if (!isWeb3Injected) {
             alert(
