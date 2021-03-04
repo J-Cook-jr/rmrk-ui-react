@@ -14,6 +14,12 @@ import { Main } from '../components/Main'
 import { DarkModeSwitch } from '../components/DarkModeSwitch'
 import { CTA } from '../components/CTA'
 import { Footer } from '../components/Footer'
+import dynamic from "next/dynamic";
+
+const RMRKInit = dynamic(
+    () => import('../components/rmrk-init'),
+    { ssr: false }
+)
 
 const Index = () => (
   <Container height="100vh">
@@ -23,6 +29,8 @@ const Index = () => (
         Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
         <Code>typescript</Code>.
       </Text>
+
+        <RMRKInit />
 
       <List spacing={3} my={0}>
         <ListItem>

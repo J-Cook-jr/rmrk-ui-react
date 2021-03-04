@@ -12,10 +12,13 @@
     "@chakra-ui/theme-tools": "1.0.4",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
+    "@polkadot/extension-dapp": "^0.37.2",
+    "@polkadot/util-crypto": "^5.9.2",
     "framer-motion": "^3.5.2",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "rmrk-tools": "git+https://github.com/Yuripetusko/rmrk-tools#chore/add-bundler"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",
