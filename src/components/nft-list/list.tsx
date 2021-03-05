@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Wrap, WrapItem, Center } from '@chakra-ui/react';
-import { fetchRemarks, utils, consolidator } from 'rmrk-tools';
+import { fetchRemarks, utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import {isEmpty} from 'ramda'
+import { isEmpty } from 'ramda';
 
 const wsProvider = new WsProvider('wss://kusama-rpc.polkadot.io');
 
@@ -10,17 +10,16 @@ const fetchRemarksPromise = async () => {
   try {
     const api = await ApiPromise.create({ provider: wsProvider });
     await api.isReady;
-    const to = await utils.getLatestFinalizedBlock(api)
-    console.log('Latest finalized block is:', to)
+    const to = await utils.getLatestFinalizedBlock(api);
+    console.log('Latest finalized block is:', to);
     const remarkBlocks = await fetchRemarks(api, 4892976, 4893177, ['']);
     console.log('Remark Blocks', remarkBlocks);
 
     if (remarkBlocks && !isEmpty(remarkBlocks)) {
-
-      const remarks = utils.getRemarksFromBlocks(remarkBlocks)
+      const remarks = utils.getRemarksFromBlocks(remarkBlocks);
       console.log('Remarks', remarks);
-      const con = new consolidator();
-      con.consolidate(remarks);
+      const consolidator = new Consolidator();
+      consolidator.consolidate(remarks);
     }
   } catch (error) {
     console.log('Could not fetch remarks', error);
