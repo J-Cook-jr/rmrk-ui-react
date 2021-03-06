@@ -1,4 +1,3 @@
-import { DarkModeSwitch } from '../components/DarkModeSwitch';
 import dynamic from 'next/dynamic';
 import Page from 'components/common/page';
 
@@ -10,7 +9,6 @@ const Index = () => {
 
   return (
     <Page title={title}>
-      <DarkModeSwitch />
       <RMRKInit />
       <NFTList />
     </Page>
