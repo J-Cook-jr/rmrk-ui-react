@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import * as rmrkTools from 'rmrk-tools';
 import { web3Enable, isWeb3Injected, web3Accounts } from '@polkadot/extension-dapp';
+import { Heading } from '@chakra-ui/react';
 
 const initWeb3Login = async () => {
   try {
@@ -22,7 +23,11 @@ const RMRKInit = () => {
   useEffect(() => {
     initWeb3Login();
   }, []);
-  return <div>Test RMRK</div>;
+  return (
+    <Heading as="h1" size="4xl" py={10}>
+      Test RMRK
+    </Heading>
+  );
 };
 
 export default RMRKInit;
