@@ -4,6 +4,7 @@ import { fetchRemarks, utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { isEmpty } from 'ramda';
 import dumpJSON from '../../dumps/dump-kusama-6462426.json';
+import { INFT } from 'lib/types';
 
 const wsProvider = new WsProvider('wss://node.rmrk.app');
 
@@ -32,10 +33,10 @@ const fetchRemarksPromise = async () => {
 };
 
 const NFTList = () => {
-  const [nftList, setNftList] = useState<{ name: string }[]>([]);
+  const [nftList, setNftList] = useState<INFT[]>([]);
 
   useEffect(() => {
-    fetchRemarksPromise().then(({ nfts }) => setNftList(nfts));
+    fetchRemarksPromise().then((data) => setNftList(data?.nfts || []));
   }, []);
 
   return (
