@@ -23,6 +23,7 @@ const RMRKInit = () => {
   useEffect(() => {
     initWeb3Login();
   }, []);
+
   return (
     <Heading as="h1" size="4xl" py={10}>
       Test RMRK
