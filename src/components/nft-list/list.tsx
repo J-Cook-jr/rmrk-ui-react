@@ -35,15 +35,9 @@ const NFTList = () => {
   const [nftList, setNftList] = useState<{ name: string }[]>([]);
 
   useEffect(() => {
-    fetchRemarksPromise().then((data) => {
-      const { nfts } = data;
-
-      setNftList(nfts);
-    });
+    fetchRemarksPromise().then(({ nfts }) => setNftList(nfts));
   }, []);
 
-  console.log('WHAT IS IT:', nftList);
-  nftList.map((item) => console.log('VALERA'));
   return (
     <Wrap spacing="30px">
       {nftList.map((item) => (
