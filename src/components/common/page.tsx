@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Container } from '@chakra-ui/react';
 import Head from 'next/head';
-import { DarkModeSwitch } from './dark-mode-switch';
+import DarkModeSwitch from './dark-mode-switch';
 
 interface IProps {
   title?: string;
