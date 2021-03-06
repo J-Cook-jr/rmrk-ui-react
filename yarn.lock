@@ -3071,12 +3071,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
 
 "rmrk-tools@git+https://github.com/Yuripetusko/rmrk-tools#chore/add-bundler":
   version "0.0.1"
-  resolved "git+https://github.com/Yuripetusko/rmrk-tools#ecc03407c63d9a56a4657ca5edacacac0dcb3b84"
+  resolved "git+https://github.com/Yuripetusko/rmrk-tools#3c764abd264b999fc53a61bcf994d492e11f22a4"
   dependencies:
     "@polkadot/api" "^3.7.3"
     "@polkadot/extension-dapp" "^0.37.2"
     chalk "^4.1.0"
     commander "^6.1.0"
+    superstruct "^0.14.2"
     winston "^3.3.3"
 
 rxjs@^6.6.6:
@@ -3374,6 +3375,11 @@ stylis@^4.0.3:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/stylis/-/stylis-4.0.7.tgz#412a90c28079417f3d27c028035095e4232d2904"
   integrity sha512-OFFeUXFgwnGOKvEXaSv0D0KQ5ADP0n6g3SVONx6I/85JzNZ3u50FRwB3lVIk1QO2HNdI75tbVzc4Z66Gdp9voA==
+
+superstruct@^0.14.2:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/superstruct/-/superstruct-0.14.2.tgz#0dbcdf3d83676588828f1cf5ed35cda02f59025b"
+  integrity sha512-nPewA6m9mR3d6k7WkZ8N8zpTWfenFH3q9pA2PkuiZxINr9DKB2+40wEQf0ixn8VaGuJ78AB6iWOtStI+/4FKZQ==
 
 supports-color@^5.3.0:
   version "5.5.0"

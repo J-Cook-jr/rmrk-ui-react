@@ -3,8 +3,9 @@ import { Wrap, WrapItem, Center } from '@chakra-ui/react';
 import { fetchRemarks, utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { isEmpty } from 'ramda';
+import dumpJSON from '../../dumps/dump-kusama-6462426.json';
 
-const wsProvider = new WsProvider('wss://kusama-rpc.polkadot.io');
+const wsProvider = new WsProvider('wss://node.rmrk.app');
 
 const fetchRemarksPromise = async () => {
   try {
@@ -12,14 +13,17 @@ const fetchRemarksPromise = async () => {
     await api.isReady;
     const to = await utils.getLatestFinalizedBlock(api);
     console.log('Latest finalized block is:', to);
-    const remarkBlocks = await fetchRemarks(api, 4892976, 4893177, ['']);
+    // const remarkBlocks = await fetchRemarks(api, 6431422, 6431424, ['']);
+    const remarkBlocks = dumpJSON;
     console.log('Remark Blocks', remarkBlocks);
 
     if (remarkBlocks && !isEmpty(remarkBlocks)) {
       const remarks = utils.getRemarksFromBlocks(remarkBlocks);
       console.log('Remarks', remarks);
       const consolidator = new Consolidator();
-      consolidator.consolidate(remarks);
+      const { nfts, collections } = consolidator.consolidate(remarks);
+      console.log('Consolidated nfts:', nfts);
+      console.log('Consolidated collections:', collections);
     }
   } catch (error) {
     console.log('Could not fetch remarks', error);
