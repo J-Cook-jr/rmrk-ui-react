@@ -15,7 +15,7 @@
     "@polkadot/api": "^3.11.1",
     "@polkadot/extension-dapp": "^0.37.2",
     "@polkadot/util-crypto": "^5.9.2",
-    "@types/ramda": "^0.27.38",
+    "@types/ramda": "0.27.37",
     "framer-motion": "^3.5.2",
     "next": "latest",
     "ramda": "^0.27.1",

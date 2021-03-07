@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Wrap, WrapItem, Center } from '@chakra-ui/react';
-import { fetchRemarks, utils, Consolidator } from 'rmrk-tools';
+import { utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { isEmpty } from 'ramda';
 import dumpJSON from '../../dumps/dump-kusama-6462426.json';
 import { INFT } from 'lib/types';
+import { isEmpty } from 'ramda';
 
 const wsProvider = new WsProvider('wss://node.rmrk.app');
 

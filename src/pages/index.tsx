@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic';
 import Page from 'components/common/page';
 
-const RMRKInit = dynamic(() => import('components/rmrk-init'), { ssr: false });
 const NFTList = dynamic(() => import('components/nft-list/nft-list'), { ssr: false });
 
 const Index = () => {
@@ -9,7 +8,6 @@ const Index = () => {
 
   return (
     <Page title={title}>
-      <RMRKInit />
       <NFTList />
     </Page>
   );
