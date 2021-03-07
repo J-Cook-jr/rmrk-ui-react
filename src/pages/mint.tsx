@@ -1,24 +1,20 @@
 import { Text } from '@chakra-ui/react';
-import { Hero } from '../components/Hero';
-import { Container } from '../components/Container';
-import { Main } from '../components/Main';
-import { DarkModeSwitch } from '../components/DarkModeSwitch';
+import { DarkModeSwitch } from 'components/DarkModeSwitch';
+import Page from 'components/common/page';
 import dynamic from 'next/dynamic';
 
-const RMRKInit = dynamic(() => import('../components/rmrk-init'), { ssr: false });
+const RMRKInit = dynamic(() => import('components/rmrk-init'), { ssr: false });
 
-const Mint = () => (
-  <Container height="100vh">
-    <Hero />
-    <Main>
-      <Text>
-        This page will be a form to mind new NFT on Kusama Remark
-      </Text>
+const Mint = () => {
+  const title = 'Mint';
 
+  return (
+    <Page title={title}>
+      <Text>This page will be a form to mind new NFT on Kusama Remark</Text>
       <RMRKInit />
-    </Main>
-    <DarkModeSwitch />
-  </Container>
-);
+      <DarkModeSwitch />
+    </Page>
+  );
+};
 
 export default Mint;
