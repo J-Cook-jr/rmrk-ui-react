@@ -3071,7 +3071,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
 
 "rmrk-tools@git+https://github.com/Yuripetusko/rmrk-tools#chore/add-bundler":
   version "0.0.1"
-  resolved "git+https://github.com/Yuripetusko/rmrk-tools#3c764abd264b999fc53a61bcf994d492e11f22a4"
+  resolved "git+https://github.com/Yuripetusko/rmrk-tools#8442dd6673b868be463d73c3cca083127b4d04fd"
   dependencies:
     "@polkadot/api" "^3.7.3"
     "@polkadot/extension-dapp" "^0.37.2"
