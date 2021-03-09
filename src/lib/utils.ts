@@ -9,7 +9,7 @@ export const ipfs_providers = {
 const resolveProvider = (provider?: keyof IIpfsProviders) =>
   provider ? ipfs_providers[provider] : ipfs_providers.ipfs;
 
-export const sanitizeIpfsUrl = (ipfsUrl: string, provider?: IPFS_PROVIDERS) => {
+export const sanitizeIpfsUrl = (ipfsUrl: string, provider?: keyof IIpfsProviders) => {
   const rr = /^ipfs:\/\/ipfs/;
   if (rr.test(ipfsUrl)) {
     return ipfsUrl.replace('ipfs://', resolveProvider(provider));
