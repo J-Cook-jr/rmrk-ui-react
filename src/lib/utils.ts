@@ -1,13 +1,13 @@
 import { IRmrk, IIpfsProviders } from 'lib/types';
 
-export const ipfs_providers: IIpfsProviders = {
+export const ipfsProviders: IIpfsProviders = {
   cloudflare: 'https://cloudflare-ipfs.com/',
   ipfs: 'https://ipfs.io/',
   pinata: 'https://gateway.pinata.cloud/',
 };
 
 const resolveProvider = (provider?: keyof IIpfsProviders) =>
-  provider ? ipfs_providers[provider] : ipfs_providers.ipfs;
+  provider ? ipfsProviders[provider] : ipfsProviders.ipfs;
 
 export const sanitizeIpfsUrl = (ipfsUrl: string, provider?: keyof IIpfsProviders) => {
   const rr = /^ipfs:\/\/ipfs/;
