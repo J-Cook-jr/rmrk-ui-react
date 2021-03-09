@@ -1,3 +1,3 @@
 import { n100 } from 'rmrk-tools';
 
-export interface INFT extends n100 {}
+export interface IRmrk extends n100 {}

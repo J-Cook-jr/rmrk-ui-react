@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Wrap, WrapItem, Center } from '@chakra-ui/react';
+import { Wrap, WrapItem, Center, SimpleGrid } from '@chakra-ui/react';
 import { utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import dumpJSON from '../../dumps/dump-kusama-6462426.json';
-import { INFT } from 'lib/types';
+import { IRmrk } from 'lib/types';
 import { isEmpty } from 'ramda';
+import NftView from 'components/nft-list/ntf-view/nft-view';
 
 const wsProvider = new WsProvider('wss://node.rmrk.app');
 
@@ -33,22 +34,20 @@ const fetchRemarksPromise = async () => {
 };
 
 const NFTList = () => {
-  const [nftList, setNftList] = useState<INFT[]>([]);
+  const [nftList, setNftList] = useState<IRmrk[]>([]);
 
   useEffect(() => {
     fetchRemarksPromise().then((data) => setNftList(data?.nfts || []));
   }, []);
 
+  console.log('WOWZER:', nftList);
+
   return (
-    <Wrap spacing="30px">
+    <SimpleGrid columns={[1, 2, 3, 4]} spacing={6}>
       {nftList.map((item) => (
-        <WrapItem>
-          <Center w="180px" h="80px" bg="red.200">
-            {item.name}
-          </Center>
-        </WrapItem>
+        <NftView item={item} />
       ))}
-    </Wrap>
+    </SimpleGrid>
   );
 };
 
