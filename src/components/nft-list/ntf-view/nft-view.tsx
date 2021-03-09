@@ -9,23 +9,33 @@ interface IProps {
 }
 
 const NftView = ({ item }: IProps) => {
-  const [imgSrc, setImgSrc] = useState<string>('');
+  const [imgSrc, setImgSrc] = useState<string>();
+  const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const getImageData = async (item: IRmrk) => await fetchRmrkMetadata(item);
+    const getImageData = async () => {
+      const response = await fetchRmrkMetadata(item);
 
-    getImageData(item)
-      .then((res) => res.json())
-      .then((data) => {
+      if (!response?.ok || response?.status !== 200) {
+        throw Error(`Could not fetch remark`);
+      }
+
+      const data = await response?.json();
+
+      if (data) {
         if (data.image) {
           const imgPath = sanitizeIpfsUrl(data.image);
-
           setImgSrc(imgPath);
         } else {
           setLoading(false);
         }
-      });
+      } else {
+        setError(true);
+      }
+    };
+
+    getImageData();
   }, [item]);
 
   const setLoaded = () => {
@@ -45,7 +55,7 @@ const NftView = ({ item }: IProps) => {
           alignItems="center"
           justifyContent="center">
           {loading && <Loader />}
-          {imgSrc ? (
+          {imgSrc && (
             <Box
               as="img"
               maxW="100%"
@@ -55,9 +65,10 @@ const NftView = ({ item }: IProps) => {
               loading="lazy"
               onLoad={setLoaded}
             />
-          ) : (
+          )}
+          {!loading && !imgSrc && (
             <Box fontSize="sm" fontFamily="mono">
-              Not an image
+              {error ? <>Could not fetch remark</> : <> Not an image</>}
             </Box>
           )}
         </Box>

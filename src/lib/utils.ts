@@ -23,11 +23,14 @@ export const sanitizeIpfsUrl = (ipfsUrl: string, provider?: IPFS_PROVIDERS) => {
   return ipfsUrl;
 };
 
-export const fetchRmrkMetadata = async (rmrk: IRmrk, data = {}) => {
+export const fetchRmrkMetadata = async (rmrk: IRmrk) => {
   if (!rmrk.metadata) return;
+  try {
+    const url = sanitizeIpfsUrl(rmrk.metadata);
+    const response = await fetch(url);
 
-  const url = sanitizeIpfsUrl(rmrk.metadata);
-  const response = await fetch(url);
-
-  return response;
+    return response;
+  } catch (error) {
+    console.log('Could not fetch remark', error);
+  }
 };
