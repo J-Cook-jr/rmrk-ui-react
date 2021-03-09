@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Wrap, WrapItem, Center } from '@chakra-ui/react';
+import { Wrap, WrapItem, Center, SimpleGrid } from '@chakra-ui/react';
 import { utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import dumpJSON from '../../dumps/dump-kusama-6462426.json';
@@ -40,16 +40,14 @@ const NFTList = () => {
     fetchRemarksPromise().then((data) => setNftList(data?.nfts || []));
   }, []);
 
+  console.log('WOWZER:', nftList);
+
   return (
-    <Wrap spacing="30px">
+    <SimpleGrid columns={4} spacing={6}>
       {nftList.map((item) => (
-        <WrapItem>
-          <Center w="180px" h="80px" bg="red.200">
-            <NftView item={item} />
-          </Center>
-        </WrapItem>
+        <NftView item={item} />
       ))}
-    </Wrap>
+    </SimpleGrid>
   );
 };
 
