@@ -1,13 +1,13 @@
-import { IRmrk } from 'lib/types';
+import { IRmrk, IIpfsProviders } from 'lib/types';
 
-export enum IPFS_PROVIDERS {
-  cloudflare = 'https://cloudflare-ipfs.com/',
-  ipfs = 'https://ipfs.io/',
-  pinata = 'https://gateway.pinata.cloud/',
-}
+export const ipfs_providers = {
+  cloudflare: 'https://cloudflare-ipfs.com/',
+  ipfs: 'https://ipfs.io/',
+  pinata: 'https://gateway.pinata.cloud/',
+};
 
-const resolveProvider = (provider?: IPFS_PROVIDERS) =>
-  provider ? IPFS_PROVIDERS[provider] : IPFS_PROVIDERS.ipfs;
+const resolveProvider = (provider?: keyof IIpfsProviders) =>
+  provider ? ipfs_providers[provider] : ipfs_providers.ipfs;
 
 export const sanitizeIpfsUrl = (ipfsUrl: string, provider?: IPFS_PROVIDERS) => {
   const rr = /^ipfs:\/\/ipfs/;
