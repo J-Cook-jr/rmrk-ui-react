@@ -1,6 +1,6 @@
 import { IRmrk, IIpfsProviders } from 'lib/types';
 
-export const ipfs_providers = {
+export const ipfs_providers: IIpfsProviders = {
   cloudflare: 'https://cloudflare-ipfs.com/',
   ipfs: 'https://ipfs.io/',
   pinata: 'https://gateway.pinata.cloud/',
