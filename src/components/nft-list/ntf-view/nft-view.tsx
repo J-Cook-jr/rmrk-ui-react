@@ -47,7 +47,6 @@ const NftView = ({ item }: IProps) => {
           {loading && <Loader />}
           {imgSrc ? (
             <Box
-              // display={loading ? 'none' : 'block'}
               as="img"
               maxW="100%"
               maxH="100%"
@@ -61,7 +60,6 @@ const NftView = ({ item }: IProps) => {
           )}
         </Box>
       </Box>
-      {item.forsale && <Box>FOR SALE</Box>}
       <Box p={3} backgroundColor="white" color="black" fontFamily="mono">
         {item.collection && <Box fontSize="xs">{item.collection}</Box>}
         <Box fontSize="md">{item.name}</Box>
