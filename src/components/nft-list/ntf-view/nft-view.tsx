@@ -57,6 +57,7 @@ const NftView = ({ item }: IProps) => {
           {loading && <Loader />}
           {imgSrc && (
             <Box
+              width={loading ? '0' : 'auto'}
               as="img"
               maxW="100%"
               maxH="100%"
