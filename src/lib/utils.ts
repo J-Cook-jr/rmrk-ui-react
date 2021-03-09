@@ -9,7 +9,7 @@ export enum IPFS_PROVIDERS {
 const resolveProvider = (provider?: IPFS_PROVIDERS) =>
   provider ? IPFS_PROVIDERS[provider] : IPFS_PROVIDERS.ipfs;
 
-const sanitizeIpfsUrl = (ipfsUrl: string, provider?: IPFS_PROVIDERS) => {
+export const sanitizeIpfsUrl = (ipfsUrl: string, provider?: IPFS_PROVIDERS) => {
   const rr = /^ipfs:\/\/ipfs/;
   if (rr.test(ipfsUrl)) {
     return ipfsUrl.replace('ipfs://', resolveProvider(provider));

@@ -1,33 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import { IRmrk } from 'lib/types';
-import { fetchRmrkMetadata, IPFS_PROVIDERS } from 'lib/utils';
+import { fetchRmrkMetadata, IPFS_PROVIDERS, sanitizeIpfsUrl } from 'lib/utils';
+import Loader from 'components/common/loader';
 
 interface IProps {
   item: IRmrk;
 }
-
-const getImageData = async (item: IRmrk) => await fetchRmrkMetadata(item);
 
 const NftView = ({ item }: IProps) => {
   const [imgSrc, setImgSrc] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    const getImageData = async (item: IRmrk) => await fetchRmrkMetadata(item);
+
     getImageData(item)
       .then((res) => res.json())
       .then((data) => {
         if (data.image) {
-          const imgPath = data.image.replace('ipfs://', IPFS_PROVIDERS.ipfs);
+          const imgPath = sanitizeIpfsUrl(data.image);
+
           setImgSrc(imgPath);
+        } else {
           setLoading(false);
         }
       });
   }, [item]);
 
-  return loading ? (
-    <>Loading...</>
-  ) : imgSrc ? (
+  const setLoaded = () => {
+    setLoading(false);
+  };
+
+  return (
     <Box borderRadius="4px" overflow="hidden">
       <Box paddingTop="100%" position="relative" backgroundColor="black">
         <Box
@@ -39,7 +44,21 @@ const NftView = ({ item }: IProps) => {
           display="flex"
           alignItems="center"
           justifyContent="center">
-          <Box as="img" maxW="100%" maxH="100%" src={imgSrc} alt={item.name} />
+          {loading && <Loader />}
+          {imgSrc ? (
+            <Box
+              // display={loading ? 'none' : 'block'}
+              as="img"
+              maxW="100%"
+              maxH="100%"
+              src={imgSrc}
+              alt={item.name}
+              loading="lazy"
+              onLoad={setLoaded}
+            />
+          ) : (
+            <>Not an image</>
+          )}
         </Box>
       </Box>
       {item.forsale && <Box>FOR SALE</Box>}
@@ -48,8 +67,6 @@ const NftView = ({ item }: IProps) => {
         <Box fontSize="md">{item.name}</Box>
       </Box>
     </Box>
-  ) : (
-    <>Not an image</>
   );
 };
 
