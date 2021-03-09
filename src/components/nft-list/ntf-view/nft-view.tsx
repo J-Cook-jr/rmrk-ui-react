@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import { IRmrk } from 'lib/types';
-import { fetchRmrkMetadata, IPFS_PROVIDERS, sanitizeIpfsUrl } from 'lib/utils';
+import { fetchRmrkMetadata, sanitizeIpfsUrl } from 'lib/utils';
 import Loader from 'components/common/loader';
 
 interface IProps {
