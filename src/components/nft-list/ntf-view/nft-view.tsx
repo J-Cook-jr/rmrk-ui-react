@@ -56,7 +56,9 @@ const NftView = ({ item }: IProps) => {
               onLoad={setLoaded}
             />
           ) : (
-            <>Not an image</>
+            <Box fontSize="sm" fontFamily="mono">
+              Not an image
+            </Box>
           )}
         </Box>
       </Box>
