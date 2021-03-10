@@ -45,7 +45,7 @@ const NFTList = () => {
   return (
     <SimpleGrid columns={[1, 2, 3, 4]} spacing={6}>
       {nftList.map((item) => (
-        <NftView item={item} />
+        <NftView item={item} key={`ntfl-list-item-${item.metadata}`} />
       ))}
     </SimpleGrid>
   );
