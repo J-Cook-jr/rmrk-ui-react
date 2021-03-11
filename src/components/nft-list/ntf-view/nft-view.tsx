@@ -13,29 +13,29 @@ const NftView = ({ item }: IProps) => {
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const getImageData = async () => {
-      const response = await fetchRmrkMetadata(item);
+  const getImageData = async (rmrk: IRmrk) => {
+    const response = await fetchRmrkMetadata(rmrk);
 
-      if (!response?.ok || response?.status !== 200) {
-        throw Error(`Could not fetch remark`);
-      }
+    if (!response?.ok || response?.status !== 200) {
+      throw Error(`Could not fetch remark`);
+    }
 
-      const data = await response?.json();
+    const data = await response?.json();
 
-      if (data) {
-        if (data.image) {
-          const imgPath = sanitizeIpfsUrl(data.image);
-          setImgSrc(imgPath);
-        } else {
-          setLoading(false);
-        }
+    if (data) {
+      if (data.image) {
+        const imgPath = sanitizeIpfsUrl(data.image);
+        setImgSrc(imgPath);
       } else {
-        setError(true);
+        setLoading(false);
       }
-    };
+    } else {
+      setError(true);
+    }
+  };
 
-    getImageData();
+  useEffect(() => {
+    getImageData(item);
   }, [item]);
 
   const setLoaded = () => {
