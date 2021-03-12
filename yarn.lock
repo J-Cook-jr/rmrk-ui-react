@@ -8525,6 +8525,11 @@ typical@^6.0.0:
   resolved "https://registry.yarnpkg.com/typical/-/typical-6.0.1.tgz#89bd1a6aa5e5e96fa907fb6b7579223bff558a06"
   integrity sha512-+g3NEp7fJLe9DPa1TArHm9QAA7YciZmWnfAqEaFrBihQ7epOv9i99rjtgb6Iz0wh3WuQDjsCTDfgRoGnmHN81A==
 
+uint8-to-base64@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/uint8-to-base64/-/uint8-to-base64-0.2.0.tgz#3f46a5f290db773c41c38cef025a4e49eadb3f3f"
+  integrity sha512-r13jrghEYZAN99GeYpEjM107DOxqB65enskpwce8rRHVAGEtaWmsF5GqoGdPMf8DIXc9XyAJTdvlvRZi4LsszA==
+
 uint8arrays@1.1.0, uint8arrays@^1.0.0, uint8arrays@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/uint8arrays/-/uint8arrays-1.1.0.tgz#d034aa65399a9fd213a1579e323f0b29f67d0ed2"

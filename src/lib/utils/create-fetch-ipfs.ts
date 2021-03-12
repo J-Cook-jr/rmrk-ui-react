@@ -1,9 +1,7 @@
 const IPFS = require('ipfs');
-const makeIpfsFetch = require('js-ipfs-fetch');
 
-export const createFetchIpfs = async (fetchFrom: string) => {
-  const ipfs = await IPFS.create();
-  const fetch = await makeIpfsFetch({ ipfs });
+export const createFetchIpfs = async () => {
+  const node = await IPFS.create();
 
-  return fetch;
+  return node;
 };
