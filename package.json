@@ -19,7 +19,6 @@
     "@polkadot/util-crypto": "^5.9.2",
     "framer-motion": "^3.5.2",
     "ipfs": "^0.54.2",
-    "js-ipfs-fetch": "^1.4.2",
     "next": "^10.0.7",
     "ramda": "^0.27.1",
     "react": "^17.0.1",
