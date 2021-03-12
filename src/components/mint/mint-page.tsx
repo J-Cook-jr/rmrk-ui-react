@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import MintCollectionForm from 'components/mint/forms/mint-collection-form';
 
 const MintPage = () => (
   <Box data-name="mint-page">
-    <Text>This page will be a form to mind new NFT on Kusama Remark</Text>
+    <MintCollectionForm />
   </Box>
 );
 
