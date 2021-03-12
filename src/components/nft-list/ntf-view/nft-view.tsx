@@ -1,13 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Box } from '@chakra-ui/react';
 import { IRmrk } from 'lib/types';
-import { fetchRmrkMetadata, sanitizeIpfsUrl } from 'lib/utils';
 import Loader from 'components/common/loader';
 import { IpfsContext } from 'lib/ipfs-context';
-// @ts-ignore
-import { encode } from 'uint8-to-base64';
 import { flatten } from 'ramda';
-import { getIpfsCid } from 'lib/utils';
+import { getIpfsCid, getIpfsJson, getIpfsImage } from 'lib/utils';
 
 interface IProps {
   item: IRmrk;
@@ -19,45 +16,13 @@ const NftView = ({ item }: IProps) => {
   const [loading, setLoading] = useState<boolean>(true);
   const ipfsNode = useContext(IpfsContext);
 
-  const getImageData = async (rmrk: IRmrk, node) => {
-    const cid = getIpfsCid(rmrk.metadata);
-    console.log('SHOW CID:', cid);
-    const stream = node.cat(cid);
-    let data = '';
-
-    for await (const chunk of stream) {
-      // chunks of data are returned as a Buffer, convert it back to a string
-      data += chunk.toString();
-    }
-    const parsedData = JSON.parse(data);
-    console.log('IS IT PARSED:', JSON.parse(data));
-
-    // const response = await fetchRmrkMetadata(rmrk);
-    //
-    // if (!response?.ok || response?.status !== 200) {
-    //   throw Error(`Could not fetch remark`);
-    // }
-
-    // const data = await response?.json();
+  const getImageData = async (rmrk: IRmrk, node: any) => {
+    const parsedData = await getIpfsJson(rmrk, node);
 
     if (parsedData) {
       if (parsedData.image) {
-        const cid = getIpfsCid(parsedData.image);
-        for await (const file of node.get(cid)) {
-          if (!file.content) continue;
-
-          const content = [];
-
-          for await (const chunk of file.content) {
-            content.push(chunk);
-          }
-          const flat = flatten(content);
-
-          const encoded = encode(flat);
-          const img = `data:image/png;base64,${encoded}`;
-
-          setImgSrc(img);
-        }
+        const img = await getIpfsImage(parsedData.image, node);
+        setImgSrc(img);
       } else {
         setLoading(false);
       }
@@ -67,7 +32,7 @@ const NftView = ({ item }: IProps) => {
   };
 
   useEffect(() => {
-    if (ipfsNode) {
+    if (item && ipfsNode) {
       getImageData(item, ipfsNode);
     }
   }, [item, ipfsNode]);
@@ -75,8 +40,6 @@ const NftView = ({ item }: IProps) => {
   const setLoaded = () => {
     setLoading(false);
   };
-
-  console.log('THIS IS HAPPENING:', item);
 
   return (
     <Box borderRadius="4px" overflow="hidden">
