@@ -74,7 +74,7 @@ const NftView = ({ item }: IProps) => {
           )}
         </Box>
       </Box>
-      <Box p={3} backgroundColor="white" color="black" fontFamily="mono">
+      <Box p={3} backgroundColor="white" color="gray.800" fontFamily="mono">
         {item.collection && <Box fontSize="xs">{item.collection}</Box>}
         <Box fontSize="md">{item.name}</Box>
       </Box>

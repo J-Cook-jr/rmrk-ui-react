@@ -1,12 +1,12 @@
-import { Text } from '@chakra-ui/react';
 import Page from 'components/common/page';
+import MintPage from 'components/mint/mint-page';
 
 const Mint = () => {
   const title = 'Mint';
 
   return (
     <Page title={title} data-name="mint">
-      <Text>This page will be a form to mind new NFT on Kusama Remark</Text>
+      <MintPage />
     </Page>
   );
 };

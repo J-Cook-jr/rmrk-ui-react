@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Wrap, WrapItem, Center, SimpleGrid } from '@chakra-ui/react';
 import { utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import dumpJSON from '../../dumps/dump-kusama-6462426.json';
+import dumpJSON from '../../../dumps/dump-kusama-6462426.json';
 import { IRmrk } from 'lib/types';
 import { isEmpty } from 'ramda';
-import NftView from 'components/nft-list/ntf-view/nft-view';
+import NftView from 'components/gallery/nft-list/ntf-view/nft-view';
 
 const wsProvider = new WsProvider('wss://node.rmrk.app');
 
