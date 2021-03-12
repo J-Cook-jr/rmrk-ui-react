@@ -43,7 +43,7 @@ const NftView = ({ item }: IProps) => {
   };
 
   return (
-    <Box borderRadius="4px" overflow="hidden">
+    <Box borderRadius="4px" overflow="hidden" data-name="nft-view">
       <Box paddingTop="100%" position="relative" backgroundColor="black">
         <Box
           position="absolute"

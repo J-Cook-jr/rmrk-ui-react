@@ -43,7 +43,7 @@ const NFTList = () => {
   console.log('WOWZER:', nftList);
 
   return (
-    <SimpleGrid columns={[1, 2, 3, 4]} spacing={6}>
+    <SimpleGrid columns={[1, 2, 3, 4]} spacing={6} data-name="nft-list">
       {nftList.map((item) => (
         <NftView item={item} key={`ntfl-list-item-${item.metadata}`} />
       ))}
