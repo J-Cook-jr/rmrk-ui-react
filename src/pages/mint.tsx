@@ -1,14 +1,12 @@
 import { Text } from '@chakra-ui/react';
 import Page from 'components/common/page';
-import DarkModeSwitch from 'componentscommon/dark-mode-switch';
 
 const Mint = () => {
   const title = 'Mint';
 
   return (
-    <Page title={title}>
+    <Page title={title} data-name="mint">
       <Text>This page will be a form to mind new NFT on Kusama Remark</Text>
-      <DarkModeSwitch />
     </Page>
   );
 };

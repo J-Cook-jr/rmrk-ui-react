@@ -6,13 +6,7 @@ const DarkModeSwitch = () => {
   const isDark = colorMode === 'dark';
 
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-      data-name="dark-mode-switch"
-      position="fixed"
-      top="1rem"
-      right="1rem">
+    <Box display="flex" alignItems="center" data-name="dark-mode-switch">
       <Box mr={2}>
         <Icon as={isDark ? MoonIcon : SunIcon} />
       </Box>
