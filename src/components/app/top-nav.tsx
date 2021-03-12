@@ -12,7 +12,7 @@ const TopNav = () => {
       display="flex"
       alignItems="center"
       justifyContent="space-between"
-      px={[4, 6]}
+      px={4}
       h={70}
       borderBottomWidth="1px"
       borderBottomStyle="solid"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Wrap, WrapItem, Center, SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 import { utils, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import dumpJSON from '../../../dumps/dump-kusama-6462426.json';
@@ -39,8 +39,6 @@ const NFTList = () => {
   useEffect(() => {
     fetchRemarksPromise().then((data) => setNftList(data?.nfts || []));
   }, []);
-
-  console.log('WOWZER:', nftList);
 
   return (
     <SimpleGrid columns={[1, 2, 3, 4]} spacing={6} data-name="nft-list">
