@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, useColorMode } from '@chakra-ui/react';
+import { Box, useColorMode } from '@chakra-ui/react';
 import DarkModeSwitch from 'components/common/dark-mode-switch';
 import SvgRmrkApp from 'components/common/icons/svg-rmrk-app';
 import TopNavMenu from 'components/app/top-nav-menu';
