@@ -41,7 +41,7 @@ const NftView = ({ item }: IProps) => {
   };
 
   return (
-    <Box borderRadius="4px" overflow="hidden">
+    <Box borderRadius="4px" overflow="hidden" data-name="nft-view">
       <Box paddingTop="100%" position="relative" backgroundColor="black">
         <Box
           position="absolute"
@@ -72,7 +72,7 @@ const NftView = ({ item }: IProps) => {
           )}
         </Box>
       </Box>
-      <Box p={3} backgroundColor="white" color="black" fontFamily="mono">
+      <Box p={3} backgroundColor="white" color="gray.800" fontFamily="mono">
         {item.collection && <Box fontSize="xs">{item.collection}</Box>}
         <Box fontSize="md">{item.name}</Box>
       </Box>
