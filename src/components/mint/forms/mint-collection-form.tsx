@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Input, Heading } from '@chakra-ui/react';
+import { Box, Input, Button } from '@chakra-ui/react';
 import FormHeading from 'components/mint/forms/form-heading';
 import { useForm } from 'react-hook-form';
 
@@ -15,10 +15,18 @@ const MintCollectionForm = () => {
   return (
     <Box data-name="mint-collection-form">
       <FormHeading>Mint collection</FormHeading>
-      <Box as="form" onSubmit={handleSubmit(onSubmit)}>
+      <Box as="form" onSubmit={handleSubmit(onSubmit)} id="mint-collection-form">
         <Input name="name" ref={register({ required: true })} />
         {errors.name && <Box>name is required</Box>}
-        <Input type="submit" value="cool" />
+        <Button
+          type="submit"
+          form="mint-collection-form"
+          colorScheme="pink"
+          variant="solid"
+          color="white"
+          backgroundColor="pink.400">
+          Submit
+        </Button>
       </Box>
     </Box>
   );
