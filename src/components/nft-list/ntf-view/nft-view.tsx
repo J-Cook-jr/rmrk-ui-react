@@ -3,8 +3,7 @@ import { Box } from '@chakra-ui/react';
 import { IRmrk } from 'lib/types';
 import Loader from 'components/common/loader';
 import { IpfsContext } from 'lib/ipfs-context';
-import { flatten } from 'ramda';
-import { getIpfsCid, getIpfsJson, getIpfsImage } from 'lib/utils';
+import { getIpfsJson, getIpfsImage } from 'lib/utils';
 
 interface IProps {
   item: IRmrk;
