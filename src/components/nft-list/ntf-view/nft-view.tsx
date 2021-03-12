@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Box } from '@chakra-ui/react';
 import { IRmrk } from 'lib/types';
-import { fetchRmrkMetadata, sanitizeIpfsUrl } from 'lib/utils';
 import Loader from 'components/common/loader';
+import { IpfsContext } from 'lib/ipfs-context';
+import { getIpfsJson, getIpfsImage } from 'lib/utils';
 
 interface IProps {
   item: IRmrk;
@@ -12,20 +13,15 @@ const NftView = ({ item }: IProps) => {
   const [imgSrc, setImgSrc] = useState<string>();
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const ipfsNode = useContext(IpfsContext);
 
-  const getImageData = async (rmrk: IRmrk) => {
-    const response = await fetchRmrkMetadata(rmrk);
+  const getImageData = async (rmrk: IRmrk, node: any) => {
+    const parsedData = await getIpfsJson(rmrk, node);
 
-    if (!response?.ok || response?.status !== 200) {
-      throw Error(`Could not fetch remark`);
-    }
-
-    const data = await response?.json();
-
-    if (data) {
-      if (data.image) {
-        const imgPath = sanitizeIpfsUrl(data.image);
-        setImgSrc(imgPath);
+    if (parsedData) {
+      if (parsedData.image) {
+        const img = await getIpfsImage(parsedData.image, node);
+        setImgSrc(img);
       } else {
         setLoading(false);
       }
@@ -35,8 +31,10 @@ const NftView = ({ item }: IProps) => {
   };
 
   useEffect(() => {
-    getImageData(item);
-  }, [item]);
+    if (item && ipfsNode) {
+      getImageData(item, ipfsNode);
+    }
+  }, [item, ipfsNode]);
 
   const setLoaded = () => {
     setLoading(false);
