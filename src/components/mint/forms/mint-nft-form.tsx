@@ -66,13 +66,7 @@ const MintCollectionForm = () => {
           </Box>
         ))}
         <Box mt={6}>
-          <Button
-            type="submit"
-            form="mint-nft-form"
-            colorScheme="pink"
-            variant="solid"
-            color="white"
-            backgroundColor="pink.400">
+          <Button type="submit" form="mint-nft-form" colorScheme="pink" variant="solid">
             Turn into Remark
           </Button>
         </Box>

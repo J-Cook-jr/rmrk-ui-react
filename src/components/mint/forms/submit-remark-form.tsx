@@ -27,13 +27,7 @@ const SubmitRemarkForm = () => {
         </Box>
         <Textarea name="rmrk" label="Decoded remark object" readOnly />
         <Box mt={6}>
-          <Button
-            type="submit"
-            form="submit-rmrk-form"
-            colorScheme="pink"
-            variant="solid"
-            color="white"
-            backgroundColor="pink.400">
+          <Button type="submit" form="submit-rmrk-form" colorScheme="pink" variant="solid">
             Submit Remark
           </Button>
         </Box>
