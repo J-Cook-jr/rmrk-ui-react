@@ -10,33 +10,31 @@ const MintCollectionForm = () => {
 
   const formFieldList: IMintFormField[] = [
     {
+      name: 'collection',
+      required: 'Please enter collection',
+      label: 'Collection',
+      error: errors.collection,
+    },
+    {
       name: 'name',
       required: 'Please enter name',
       label: 'Name',
       error: errors.name,
     },
     {
+      name: 'instance',
+      required: 'Please enter instance',
+      label: 'Instance',
+      error: errors.instance,
+    },
+    {
       type: 'number',
-      name: 'max',
-      required: 'Please enter max',
-      label: 'Max',
-      error: errors.max,
+      name: 'transferable',
+      label: 'Transferable (0 = no, 1 = yes, 1> = block from which transfers are OK)',
     },
     {
-      name: 'issuer',
-      required: 'Please enter issuer',
-      label: 'Issuer',
-      error: errors.issuer,
-    },
-    {
-      name: 'symbol',
-      required: 'Please enter symbol',
-      label: 'Symbol',
-      error: errors.symbol,
-    },
-    {
-      name: 'id',
-      label: 'ID (auto-generated)',
+      name: 'serialNumber',
+      label: 'Serial number (incremental, auto-pads to 16)',
     },
     {
       name: 'metadata',
@@ -51,11 +49,11 @@ const MintCollectionForm = () => {
   };
 
   return (
-    <Box data-name="mint-collection-form">
-      <FormHeading>Mint collection</FormHeading>
+    <Box data-name="mint-nft-form">
+      <FormHeading>Mint NFT</FormHeading>
       <Box as="form" onSubmit={handleSubmit(onSubmit)} id="mint-collection-form">
         {formFieldList.map((item, i) => (
-          <Box mt={i === 0 ? undefined : 4} key={`mint-collection-form-field-${item.name}`}>
+          <Box mt={i === 0 ? undefined : 4} key={`mint-nft-form-field-${item.name}`}>
             <Input
               type={item.type}
               name={item.name}
