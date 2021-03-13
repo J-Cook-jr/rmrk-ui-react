@@ -12,26 +12,26 @@ const MintCollectionForm = () => {
     {
       name: 'name',
       required: 'Please enter name',
-      label: 'Name',
+      label: 'Name*',
       error: errors.name,
     },
     {
       type: 'number',
       name: 'max',
       required: 'Please enter max',
-      label: 'Max',
+      label: 'Max*',
       error: errors.max,
     },
     {
       name: 'issuer',
       required: 'Please enter issuer',
-      label: 'Issuer',
+      label: 'Issuer*',
       error: errors.issuer,
     },
     {
       name: 'symbol',
       required: 'Please enter symbol',
-      label: 'Symbol',
+      label: 'Symbol*',
       error: errors.symbol,
     },
     {
@@ -52,7 +52,9 @@ const MintCollectionForm = () => {
 
   return (
     <Box data-name="mint-collection-form">
-      <FormHeading>Mint collection</FormHeading>
+      <Box mb={4}>
+        <FormHeading>Mint collection</FormHeading>
+      </Box>
       <Box as="form" onSubmit={handleSubmit(onSubmit)} id="mint-collection-form">
         {formFieldList.map((item, i) => (
           <Box mt={i === 0 ? undefined : 4} key={`mint-collection-form-field-${item.name}`}>

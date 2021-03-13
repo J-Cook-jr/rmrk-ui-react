@@ -12,19 +12,19 @@ const MintCollectionForm = () => {
     {
       name: 'collection',
       required: 'Please enter collection',
-      label: 'Collection',
+      label: 'Collection*',
       error: errors.collection,
     },
     {
       name: 'name',
       required: 'Please enter name',
-      label: 'Name',
+      label: 'Name*',
       error: errors.name,
     },
     {
       name: 'instance',
       required: 'Please enter instance',
-      label: 'Instance',
+      label: 'Instance*',
       error: errors.instance,
     },
     {
@@ -39,7 +39,7 @@ const MintCollectionForm = () => {
     {
       name: 'metadata',
       required: 'Please enter ipfs metadata',
-      label: 'Metadata (IPFS hash)',
+      label: 'Metadata* (IPFS hash)',
       error: errors.metadata,
     },
   ];
@@ -50,8 +50,10 @@ const MintCollectionForm = () => {
 
   return (
     <Box data-name="mint-nft-form">
-      <FormHeading>Mint NFT</FormHeading>
-      <Box as="form" onSubmit={handleSubmit(onSubmit)} id="mint-collection-form">
+      <Box mb={4}>
+        <FormHeading>Mint NFT</FormHeading>
+      </Box>
+      <Box as="form" onSubmit={handleSubmit(onSubmit)} id="mint-nft-form">
         {formFieldList.map((item, i) => (
           <Box mt={i === 0 ? undefined : 4} key={`mint-nft-form-field-${item.name}`}>
             <Input
@@ -66,7 +68,7 @@ const MintCollectionForm = () => {
         <Box mt={6}>
           <Button
             type="submit"
-            form="mint-collection-form"
+            form="mint-nft-form"
             colorScheme="pink"
             variant="solid"
             color="white"

@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const Input = forwardRef<HTMLInputElement, IProps>(({ id, label, type, name, error }, ref) => (
-  <Box>
+  <Box data-name="input">
     {label && (
       <Box mb={1}>
         <Label htmlFor={id}>{label}</Label>
