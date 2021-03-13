@@ -1,23 +1,26 @@
-import React from 'react';
-import { Box, Input, Button } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
+import { Box, Button } from '@chakra-ui/react';
 import FormHeading from 'components/mint/forms/form-heading';
 import { useForm } from 'react-hook-form';
+import Input from 'components/common/inputs/input';
 
 const MintCollectionForm = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data: any) => {
     console.log(data);
   };
 
-  console.log(watch('name'));
-
   return (
     <Box data-name="mint-collection-form">
       <FormHeading>Mint collection</FormHeading>
       <Box as="form" onSubmit={handleSubmit(onSubmit)} id="mint-collection-form">
-        <Input name="name" ref={register({ required: true })} />
-        {errors.name && <Box>name is required</Box>}
+        <Input
+          name="name"
+          ref={register({ required: 'Please enter name' })}
+          label="Name"
+          error={errors.name}
+        />
         <Button
           type="submit"
           form="mint-collection-form"
