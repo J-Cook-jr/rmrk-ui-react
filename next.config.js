@@ -17,4 +17,7 @@ module.exports = {
       '/mint': { page: '/mint' },
     };
   },
+  images: {
+    domains: ['cloudflare-ipfs.com'],
+  },
 };

@@ -3,6 +3,7 @@ import { Box } from '@chakra-ui/react';
 import { IRmrk } from 'lib/types';
 import Loader from 'components/common/loader';
 import { fetchRmrkMetadata, sanitizeIpfsUrl } from 'lib/utils';
+import Image from 'next/image';
 
 interface IProps {
   item: IRmrk;
@@ -58,16 +59,7 @@ const NftView = ({ item }: IProps) => {
           justifyContent="center">
           {loading && <Loader />}
           {imgSrc && (
-            <Box
-              width={loading ? '0' : 'auto'}
-              as="img"
-              maxW="100%"
-              maxH="100%"
-              src={imgSrc}
-              alt={item.name}
-              loading="lazy"
-              onLoad={setLoaded}
-            />
+            <Image width={400} height={400} src={imgSrc} alt={item.name} onLoad={setLoaded} />
           )}
           {!loading && !imgSrc && (
             <Box fontSize="sm" fontFamily="mono">
