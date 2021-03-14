@@ -4,10 +4,20 @@ import { IRmrk } from 'lib/types';
 import Loader from 'components/common/loader';
 import { fetchRmrkMetadata, sanitizeIpfsUrl } from 'lib/utils';
 import Image from 'next/image';
+import styled from '@emotion/styled';
 
 interface IProps {
   item: IRmrk;
 }
+
+const StyledImg = styled(Box)`
+  img {
+    width: auto !important;
+    height: auto !important;
+    min-width: auto !important;
+    min-height: auto !important;
+  }
+`;
 
 const NftView = ({ item }: IProps) => {
   const [imgSrc, setImgSrc] = useState<string>();
@@ -59,7 +69,9 @@ const NftView = ({ item }: IProps) => {
           justifyContent="center">
           {loading && <Loader />}
           {imgSrc && (
-            <Image width={400} height={400} src={imgSrc} alt={item.name} onLoad={setLoaded} />
+            <StyledImg>
+              <Image width={400} height={400} src={imgSrc} alt={item.name} onLoad={setLoaded} />
+            </StyledImg>
           )}
           {!loading && !imgSrc && (
             <Box fontSize="sm" fontFamily="mono">
