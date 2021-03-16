@@ -1,7 +1,7 @@
-import { n100 } from 'rmrk-tools';
+import { NFT } from 'rmrk-tools';
 import { FieldError } from 'react-hook-form';
 
-export interface IRmrk extends n100 {}
+export interface IRmrk extends NFT {}
 
 export interface IIpfsProviders {
   cloudflare: string;

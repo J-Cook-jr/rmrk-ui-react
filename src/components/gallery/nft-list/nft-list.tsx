@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
-import { utils, Consolidator } from 'rmrk-tools';
+import { getRemarksFromBlocks, Consolidator } from 'rmrk-tools';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { IRmrk } from 'lib/types';
 import { isEmpty } from 'ramda';
@@ -46,7 +46,7 @@ const fetchRemarksPromise = async () => {
     // console.log('Remark Blocks', remarkBlocks);
 
     if (remarkBlocks && !isEmpty(remarkBlocks)) {
-      const remarks = utils.getRemarksFromBlocks(remarkBlocks);
+      const remarks = getRemarksFromBlocks(remarkBlocks);
       // console.log('Remarks', remarks);
       const consolidator = new Consolidator();
       // console.log('Consolidated nfts:', nfts);

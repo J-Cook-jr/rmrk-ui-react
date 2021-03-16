@@ -26,7 +26,7 @@
     "react-hook-form": "^6.15.4",
     "react-intersection-observer": "^8.31.0",
     "react-preloader-icon": "^1.0.0",
-    "rmrk-tools": "git+https://github.com/Yuripetusko/rmrk-tools#chore/add-bundler",
+    "rmrk-tools": "^0.0.6",
     "uint8-to-base64": "^0.2.0"
   },
   "devDependencies": {

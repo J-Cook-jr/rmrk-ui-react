@@ -11,6 +11,7 @@ module.exports = {
     // Important: return the modified config
     return config;
   },
+  trailingSlash: true,
   exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
     return {
       '/': { page: '/' },
