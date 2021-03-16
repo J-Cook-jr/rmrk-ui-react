@@ -1,26 +1,41 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 import { IRmrk } from 'lib/types';
 import Loader from 'components/common/loader';
-import { IpfsContext } from 'lib/ipfs-context';
-import { getIpfsJson, getIpfsImage } from 'lib/utils';
+import { fetchRmrkMetadata, sanitizeIpfsUrl } from 'lib/utils';
+import Image from 'next/image';
+import styled from '@emotion/styled';
 
 interface IProps {
   item: IRmrk;
 }
 
+const StyledImg = styled(Box)`
+  img {
+    width: auto !important;
+    height: auto !important;
+    min-width: auto !important;
+    min-height: auto !important;
+  }
+`;
+
 const NftView = ({ item }: IProps) => {
   const [imgSrc, setImgSrc] = useState<string>();
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-  const ipfsNode = useContext(IpfsContext);
 
-  const getImageData = async (rmrk: IRmrk, node: any) => {
-    const parsedData = await getIpfsJson(rmrk, node);
+  const getImageData = async (rmrk: IRmrk) => {
+    const response = await fetchRmrkMetadata(rmrk);
 
-    if (parsedData) {
-      if (parsedData.image) {
-        const img = await getIpfsImage(parsedData.image, node);
+    if (!response?.ok || response?.status !== 200) {
+      throw Error(`Could not fetch remark`);
+    }
+
+    const data = await response?.json();
+
+    if (data) {
+      if (data.image) {
+        const img = sanitizeIpfsUrl(data.image);
         setImgSrc(img);
       } else {
         setLoading(false);
@@ -31,10 +46,10 @@ const NftView = ({ item }: IProps) => {
   };
 
   useEffect(() => {
-    if (item && ipfsNode) {
-      getImageData(item, ipfsNode);
+    if (item) {
+      getImageData(item);
     }
-  }, [item, ipfsNode]);
+  }, [item]);
 
   const setLoaded = () => {
     setLoading(false);
@@ -54,16 +69,9 @@ const NftView = ({ item }: IProps) => {
           justifyContent="center">
           {loading && <Loader />}
           {imgSrc && (
-            <Box
-              width={loading ? '0' : 'auto'}
-              as="img"
-              maxW="100%"
-              maxH="100%"
-              src={imgSrc}
-              alt={item.name}
-              loading="lazy"
-              onLoad={setLoaded}
-            />
+            <StyledImg>
+              <Image width={400} height={400} src={imgSrc} alt={item.name} onLoad={setLoaded} />
+            </StyledImg>
           )}
           {!loading && !imgSrc && (
             <Box fontSize="sm" fontFamily="mono">
