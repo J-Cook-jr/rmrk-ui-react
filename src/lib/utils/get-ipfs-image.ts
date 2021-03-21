@@ -1,4 +1,4 @@
-import { getIpfsCid } from 'libutils/get-ipfs-cid';
+import { getIpfsCid } from 'lib/utils/get-ipfs-cid';
 import { flatten } from 'ramda';
 // @ts-ignore
 import { encode } from 'uint8-to-base64';

@@ -17,6 +17,8 @@
     "@polkadot/api": "^3.11.1",
     "@polkadot/extension-dapp": "^0.37.2",
     "@polkadot/util-crypto": "^5.9.2",
+    "dexie": "^3.1.0-alpha.8",
+    "dexie-react-hooks": "^1.0.6",
     "framer-motion": "^3.5.2",
     "ipfs": "^0.54.2",
     "next": "^10.0.7",
@@ -26,8 +28,9 @@
     "react-hook-form": "^6.15.4",
     "react-intersection-observer": "^8.31.0",
     "react-preloader-icon": "^1.0.0",
-    "rmrk-tools": "^0.0.6",
-    "uint8-to-base64": "^0.2.0"
+    "rmrk-tools": "^0.0.20",
+    "uint8-to-base64": "^0.2.0",
+    "zustand": "^3.3.3"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",
