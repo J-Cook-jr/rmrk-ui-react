@@ -16,7 +16,7 @@ type Block = {
 };
 
 const NFTList = () => {
-  const nfts = useLiveQuery(() => db.nfts.toArray());
+  const nfts = useLiveQuery(() => db.nfts.reverse().toArray());
 
   return (
     <SimpleGrid columns={[1, 2, 3, 4]} spacing={6} data-name="nft-list">

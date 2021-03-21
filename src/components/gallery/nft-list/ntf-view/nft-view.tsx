@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Box } from '@chakra-ui/react';
-import { IRmrk } from 'lib/types';
+import { Box, Spinner } from '@chakra-ui/react';
 import Loader from 'components/common/loader';
 import { fetchRmrkMetadata, sanitizeIpfsUrl } from 'lib/utils';
 import Image from 'next/image';
 import styled from '@emotion/styled';
+import { NFT } from 'lib/models/NFT';
 
 interface IProps {
-  item: IRmrk;
+  item: NFT;
 }
 
 const StyledImg = styled(Box)`
@@ -24,7 +24,7 @@ const NftView = ({ item }: IProps) => {
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const getImageData = async (rmrk: IRmrk) => {
+  const getImageData = async (rmrk: NFT) => {
     const response = await fetchRmrkMetadata(rmrk);
 
     if (!response?.ok || response?.status !== 200) {
@@ -37,6 +37,7 @@ const NftView = ({ item }: IProps) => {
       if (data.image) {
         const img = sanitizeIpfsUrl(data.image);
         setImgSrc(img);
+        setLoading(false);
       } else {
         setLoading(false);
       }
@@ -67,8 +68,12 @@ const NftView = ({ item }: IProps) => {
           display="flex"
           alignItems="center"
           justifyContent="center">
-          {loading && <Loader />}
-          {imgSrc && (
+          {loading && (
+            <Box>
+              <Spinner />
+            </Box>
+          )}
+          {!loading && imgSrc && (
             <StyledImg>
               <Image width={400} height={400} src={imgSrc} alt={item.name} onLoad={setLoaded} />
             </StyledImg>
@@ -80,7 +85,7 @@ const NftView = ({ item }: IProps) => {
           )}
         </Box>
       </Box>
-      <Box p={3} backgroundColor="white" color="gray.800" fontFamily="mono">
+      <Box p={3} backgroundColor="white" color="gray.800" fontFamily="mono" width="100%">
         {item.collection && <Box fontSize="xs">{item.collection}</Box>}
         <Box fontSize="md">{item.name}</Box>
       </Box>

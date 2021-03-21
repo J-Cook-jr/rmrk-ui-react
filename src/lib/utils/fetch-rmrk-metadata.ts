@@ -1,7 +1,7 @@
-import { IRmrk } from 'lib/types';
 import { sanitizeIpfsUrl } from 'lib/utils';
+import { NFT } from 'lib/models/NFT';
 
-export const fetchRmrkMetadata = async (rmrk: IRmrk) => {
+export const fetchRmrkMetadata = async (rmrk: NFT) => {
   if (!rmrk.metadata) return;
   try {
     const url = sanitizeIpfsUrl(rmrk.metadata);

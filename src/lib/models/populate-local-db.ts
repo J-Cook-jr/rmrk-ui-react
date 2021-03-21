@@ -1,9 +1,10 @@
 import { db } from './db';
 import { RemarkListener, NFT, Collection } from 'rmrk-tools';
 import { NFT as DexieNFT } from 'lib/models/NFT';
-
 import { WS_PROVIDER_URLS } from 'lib/accounts/constants';
 import { WsProvider } from '@polkadot/api';
+
+let subscriber;
 
 const saveRemarks = async ({ nfts, collections }: { nfts: NFT[]; collections: Collection[] }) => {
   const dexieNfts: DexieNFT[] = nfts.map((nft: NFT) => ({
@@ -11,7 +12,9 @@ const saveRemarks = async ({ nfts, collections }: { nfts: NFT[]; collections: Co
     id: `${nft.block}-${nft.collection}-${nft.instance}-${nft.sn}`,
     snum: parseInt((nft.sn as never) as string, 10),
   }));
+  console.log('save remark');
   await db.nfts.bulkPut(dexieNfts);
+  // @ts-ignore
   await db.collections.bulkPut(collections);
 };
 
@@ -53,8 +56,10 @@ const runListener = async (wsProviderUrl: string) => {
     initialBlockCalls: initialBlockCalls,
   });
 
-  console.log('listener', listener);
-
-  const subscriber = listener.initialiseObservable();
+  if (subscriber) {
+    // Unsubscribe from previous listener
+    subscriber();
+  }
+  subscriber = listener.initialiseObservable();
   subscriber.subscribe(saveRemarks);
 };

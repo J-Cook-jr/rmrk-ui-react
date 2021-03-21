@@ -1,4 +1,4 @@
-import { Attribute } from 'libmodels/NFT';
+import { Attribute } from 'lib/models/NFT';
 
 type Change = {
   field: string;
