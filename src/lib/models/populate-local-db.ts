@@ -4,8 +4,6 @@ import { NFT as DexieNFT } from 'lib/models/NFT';
 import { WS_PROVIDER_URLS } from 'lib/accounts/constants';
 import { WsProvider } from '@polkadot/api';
 
-let subscriber;
-
 const saveRemarks = async ({ nfts, collections }: { nfts: NFT[]; collections: Collection[] }) => {
   const dexieNfts: DexieNFT[] = nfts.map((nft: NFT) => ({
     ...nft,
@@ -49,17 +47,12 @@ const runListener = async (wsProviderUrl: string) => {
   );
   const initialBlockCalls = await response.json();
 
-  console.log('start listener');
   const listener = new RemarkListener({
     providerInterface: wsProvider,
     prefixes: [],
     initialBlockCalls: initialBlockCalls,
   });
 
-  if (subscriber) {
-    // Unsubscribe from previous listener
-    subscriber();
-  }
-  subscriber = listener.initialiseObservable();
+  const subscriber = listener.initialiseObservable();
   subscriber.subscribe(saveRemarks);
 };
