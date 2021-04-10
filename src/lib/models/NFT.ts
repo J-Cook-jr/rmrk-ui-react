@@ -1,3 +1,5 @@
+import { OP_TYPES } from 'rmrk-tools/dist/tools/constants';
+
 export interface Attribute {
   display_type: DisplayType;
   trait_type: string;
@@ -16,6 +18,7 @@ type Change = {
   old: any;
   new: any;
   caller: string;
+  opType: OP_TYPES;
   block: number;
   valid: boolean;
 };
@@ -45,6 +48,8 @@ export interface NFT {
   transferable: number;
   sn: string;
   snum: number; // App only 'sn' as Int
+  emotenum: number; // App only 'computed total of reactions' as Int
+  updatedAtBlock: number; // App only block number this NFT was last updated at
   metadata?: string;
   image?: string; // App only prefetched image
   data?: string;

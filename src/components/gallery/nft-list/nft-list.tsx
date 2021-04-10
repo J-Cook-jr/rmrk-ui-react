@@ -4,17 +4,6 @@ import NftView from 'components/gallery/nft-list/ntf-view/nft-view';
 import { db } from 'lib/models/db';
 import { useLiveQuery } from 'dexie-react-hooks';
 
-type Call = {
-  call: string;
-  value: string;
-  caller: string;
-};
-
-type Block = {
-  block: number;
-  calls: Call[];
-};
-
 const NFTList = () => {
   const nfts = useLiveQuery(() => db.nfts.limit(200).reverse().toArray());
 
