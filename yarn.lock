@@ -10115,10 +10115,10 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rmrk-tools@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/rmrk-tools/-/rmrk-tools-0.1.8.tgz#910997cf0ef17f47de6920a94187ea53227f273c"
-  integrity sha512-XxWnARgkca2iE9R/ROO3L2PQLXr8a3Tq/E1znAyOeXI81s1CABQxMnVZqNyilb5ApFj4ToPAOu9Dejq7h2p4Dg==
+rmrk-tools@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/rmrk-tools/-/rmrk-tools-0.1.10.tgz#090243e5c583bc4834f61683aee3f0ed962491fa"
+  integrity sha512-YMo3IqG2LqkqUqzFUEcJFIqHKpc+W8h6JJEyuNhqHFctadn03Dc0/yn6mAHyBNAivLJb1iib9RK0Kzld2wboWA==
   dependencies:
     chalk "^4.1.0"
     isomorphic-fetch "^3.0.0"

@@ -36,7 +36,7 @@
     "react-icons": "^4.2.0",
     "react-intersection-observer": "^8.31.0",
     "react-preloader-icon": "^1.0.0",
-    "rmrk-tools": "^0.1.8",
+    "rmrk-tools": "^0.1.10",
     "subscriptions-transport-ws": "^0.9.18",
     "uint8-to-base64": "^0.2.0",
     "zustand": "^3.3.3"

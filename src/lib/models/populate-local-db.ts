@@ -7,9 +7,10 @@ import { useNFTStore } from 'lib/nft/store';
 import { Subscription } from 'rxjs';
 import { polkadotApi } from 'lib/app/get-polkadot-api';
 import { Remark } from 'rmrk-tools/dist/tools/consolidator/remark';
-import { Consolidator } from 'lib/listener/consolidator';
-import { RemarkListener } from 'rmrk-tools';
+import { Consolidator, RemarkListener } from 'rmrk-tools';
 import { IStorageProvider } from 'rmrk-tools/dist/listener';
+import { Adapter } from 'lib/models/adapter';
+import { w3Store } from 'lib/w3/store';
 
 export const getNumberOfEmotes = (reactions: NFT['reactions']) => {
   const values = Object.values(reactions);
@@ -102,7 +103,8 @@ const runListener = async () => {
   const { setUnfinalisedRemarks } = useNFTStore.getState();
 
   const consolidateFunction = (remarks: Remark[]) => {
-    const consolidator = new Consolidator();
+    const { systemProperties } = w3Store.getState();
+    const consolidator = new Consolidator(systemProperties.ss58Format, new Adapter());
     return consolidator.consolidate(remarks);
   };
 
