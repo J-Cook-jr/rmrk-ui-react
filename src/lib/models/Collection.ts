@@ -1,21 +1,5 @@
-import { Attribute } from 'lib/models/NFT';
-
-type Change = {
-  field: string;
-  old: any;
-  new: any;
-  caller: string;
-  block: number;
-  valid: boolean;
-};
-
-export interface CollectionMetadata {
-  description?: string;
-  attributes: Attribute[];
-  external_url?: string;
-  image?: string;
-  image_data?: string;
-}
+import { Change } from 'rmrk-tools/dist/rmrk1.0.0/changelog';
+import { CollectionMetadata } from 'rmrk-tools/dist/rmrk1.0.0/classes/collection';
 
 export interface Collection {
   block: number;
