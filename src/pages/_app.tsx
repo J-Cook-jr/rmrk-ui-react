@@ -4,9 +4,14 @@ import theme from '../theme';
 import { AppProps } from 'next/app';
 import { IpfsContextProvider } from 'lib/ipfs-context';
 import { createFetchIpfs } from 'lib/utils';
+import Fonts from 'components/app/fonts';
 import dynamic from 'next/dynamic';
 
-const InitialiseRMRKListener = dynamic(() => import('components/common/initialise-rmrk-listener'), {
+const PreloadPolkadotAPI = dynamic(() => import('components/app/preload-polkadot-api'), {
+  ssr: false,
+});
+
+const PopulateDataToIndexDb = dynamic(() => import('components/dexie/populate-data-to-index-db'), {
   ssr: false,
 });
 
@@ -20,8 +25,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <IpfsContextProvider value={ipfsNode}>
       <ChakraProvider resetCSS theme={theme}>
+        <Fonts />
         <Component {...pageProps} />
-        <InitialiseRMRKListener />
+        <PopulateDataToIndexDb />
+        <PreloadPolkadotAPI />
       </ChakraProvider>
     </IpfsContextProvider>
   );
