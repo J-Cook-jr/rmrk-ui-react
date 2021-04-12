@@ -21,6 +21,7 @@
     "@polkadot/util-crypto": "^6.0.5",
     "@polkadot/x-randomvalues": "^6.0.5",
     "@types/emoji-mart": "^3.0.4",
+    "@types/react-copy-to-clipboard": "^5.0.0",
     "@types/react-icons": "^3.0.0",
     "@types/react-transition-group": "^4.4.1",
     "date-fns": "^2.20.2",
