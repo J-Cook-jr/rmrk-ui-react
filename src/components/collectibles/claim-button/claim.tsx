@@ -39,7 +39,9 @@ const ClaimButton = ({ nft, someoneInteractingWithNFT }: IProps) => {
       colorScheme="green"
       size="sm"
       onClick={startPurchase}
-      disabled={isDisabled}>
+      disabled={true}
+      // disabled={isDisabled}
+    >
       {buttonCopy}
     </Button>
   );
