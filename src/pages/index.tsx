@@ -2,14 +2,14 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Page from 'components/common/page';
 
-const GalleryPage = dynamic(() => import('components/gallery/gallery-page'), { ssr: false });
+const PageHome = dynamic(() => import('components/home/pahe-home'), { ssr: false });
 
 const Index = () => {
-  const title = 'Home';
+  const title = 'RMRK Marketplace';
 
   return (
     <Page title={title}>
-      <GalleryPage />
+      <PageHome />
     </Page>
   );
 };

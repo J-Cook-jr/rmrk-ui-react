@@ -1,5 +1,6 @@
 import { NFT } from 'rmrk-tools';
 import { FieldError } from 'react-hook-form';
+import { HISTORY_EVENTS } from 'lib/collectibles/types';
 
 export interface IRmrk extends NFT {}
 
@@ -15,4 +16,13 @@ export interface IMintFormField {
   required?: string;
   label: string;
   error?: FieldError;
+}
+
+export interface INftHistoryEvent {
+  type: HISTORY_EVENTS;
+  from: string;
+  to: string;
+  amount?: number;
+  date: string;
+  timestamp: number;
 }

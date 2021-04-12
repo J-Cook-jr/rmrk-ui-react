@@ -67,7 +67,7 @@ const initialSeed = async (latestBlockInitDump: number, latestBlock: number): Pr
       emotenum: getNumberOfEmotes(nft.reactions),
       updatedAtBlock: nft.updatedAtBlock || nft.block,
     }));
-
+    await db.collections.bulkPut(blocks.collections);
     await db.nfts.bulkPut(nfts);
     await db.substrate.update(0, { latestBlockInitDump: blocks.lastBlock });
   }

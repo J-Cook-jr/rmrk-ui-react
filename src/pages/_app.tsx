@@ -6,6 +6,8 @@ import { IpfsContextProvider } from 'lib/ipfs-context';
 import { createFetchIpfs } from 'lib/utils';
 import Fonts from 'components/app/fonts';
 import dynamic from 'next/dynamic';
+import 'components/common/emote/emoji-mart.css';
+import { appWithTranslation } from 'next-i18next';
 
 const PreloadPolkadotAPI = dynamic(() => import('components/app/preload-polkadot-api'), {
   ssr: false,
@@ -34,4 +36,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);
