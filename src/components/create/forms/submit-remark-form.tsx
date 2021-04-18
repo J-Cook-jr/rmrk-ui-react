@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Box } from '@chakra-ui/react';
 import Textarea from 'components/common/inputs/textarea';
 import { useForm } from 'react-hook-form';
-import FormHeading from 'components/mint/forms/form-heading';
+import FormHeading from 'components/create/forms/form-heading';
 
 const SubmitRemarkForm = () => {
   const { register, handleSubmit, errors } = useForm();

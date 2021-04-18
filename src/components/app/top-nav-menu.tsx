@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react';
 import MenuOption from 'components/app/menu-option';
 
 const menuOptionList: { href: string; text: string }[] = [
-  { href: '/mint', text: 'Mint' },
+  { href: '/create', text: 'Create' },
   { href: '/', text: 'Gallery' },
 ];
 

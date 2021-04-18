@@ -2,9 +2,9 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Page from 'components/common/page';
 
-const MintPage = dynamic(() => import('components/mint/mint-page'), { ssr: false });
+const MintPage = dynamic(() => import('components/create/create-page'), { ssr: false });
 
-const Mint = () => {
+const Create = () => {
   const title = 'Mint';
 
   return (
@@ -14,4 +14,4 @@ const Mint = () => {
   );
 };
 
-export default Mint;
+export default Create;
